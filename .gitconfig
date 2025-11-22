@@ -8,6 +8,7 @@
   l = log --pretty=format:' %C(bold)%C(magenta)%an\t%C(red) %s %C(yellow)%cr\b\b\b\b%Creset' --abbrev-commit --date=relative -10
   s = status
   c = "!f() { git add -A; git commit -a -m \"$1\"; git push; }; f \"$1\""
+  e = "!f() { git commit --allow-empty -m \"$1\"; git push; }; f \"$1\""
   untrack = update-index --assume-unchanged
   track = update-index --no-assume-unchanged
   undolast = reset --soft HEAD~1
