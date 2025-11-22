@@ -14,8 +14,8 @@
   undolast = reset --soft HEAD~1
   repair = "!f() { git branch --set-upstream-to=origin/$1 $1; git pull; }; f \"$(git rev-parse --abbrev-ref HEAD)\""
   fullrepair = "!f() { branch=\"$(git rev-parse --abbrev-ref HEAD)\"; git checkout main; git branch -D $branch; git fetch origin $branch:$branch; git checkout $branch; git repair; git s; }; f"
-  newbranch = "!f() { git checkout master; git pull; git checkout -b $1; }; f \"$1\""
-
+  newbranch = "!f() { git checkout main; git pull; git checkout -b $1; }; f \"$1\""
+  p = "!f() { git merge origin/$1; }; f \"$(git rev-parse --abbrev-ref HEAD)\""
   # Temporary commits.
   tc = "!f() { git c \"Temporary commit.\"; echo 'Created temporary commit.'; }; f"
   rt = "!f() { git pull; git undolast; git push -f; git reset HEAD .; git s; echo 'Removed temporary commit.'; }; f"
